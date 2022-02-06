@@ -55,4 +55,23 @@ public class RegistryTest {
         
         Assert.assertEquals(RegisterResult.DUPLICATED, result);
     }
+
+    // Pruebas de Frontera
+    @Test
+    public void validateRegistryFronterAge(){
+        Person person = new Person("Person05", 0005, 18, Gender.UNIDENTIFIED, true);
+
+        registry.registerVoter(person);
+        RegisterResult result = registry.registerVoter(person);
+
+        Assert.assertEquals(RegisterResult.VALID, result);
+    }
+
+    @Test
+    public void validateRegistryFronterDead(){
+        Person person = new Person("Person06", 0006, 15, Gender.MALE, false);
+        RegisterResult result = registry.registerVoter(person);
+
+        Assert.assertEquals(RegisterResult.DEAD, result);
+    }
 }
