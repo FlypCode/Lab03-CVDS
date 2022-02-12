@@ -17,7 +17,6 @@ public class RegistryTest {
         Assert.assertEquals(RegisterResult.VALID, result);
     }
 
-    // TODO: Complete with more test cases
     @Test
     public void validateRegistryDead(){
         Person person = new Person("Person01", 0001, 19, Gender.MALE, false);
@@ -58,7 +57,7 @@ public class RegistryTest {
 
     // Pruebas de Frontera
     @Test
-    public void validateRegistryFronterAge(){
+    public void validateRegistryFronterAgeMax(){
         Person person = new Person("Person05", 0005, 18, Gender.UNIDENTIFIED, true);
 
         registry.registerVoter(person);
@@ -68,10 +67,10 @@ public class RegistryTest {
     }
 
     @Test
-    public void validateRegistryFronterDead(){
-        Person person = new Person("Person06", 0006, 15, Gender.MALE, false);
+    public void validateRegistryFronterAgeMin(){
+        Person person = new Person("Person06", 0006, 0, Gender.MALE, false);
         RegisterResult result = registry.registerVoter(person);
 
-        Assert.assertEquals(RegisterResult.DEAD, result);
+        Assert.assertEquals(RegisterResult.INVALID_AGE, result);
     }
 }
